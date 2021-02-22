@@ -1,0 +1,23 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /api/v1/cache/client
+
+spring:
+  application:
+    name: Cache-Client
+  cache:
+    type: redis
+    host: localhost
+    port: 6379
+    #cache-names: "stocks,exchanges,countries"
+    #redis:
+      #time-to-live: "10m"
+
+app:
+  cache:
+    configByName:
+      "exchanges":
+        timeToLive: 120s
+      "countries":
+        timeToLive: 3m
