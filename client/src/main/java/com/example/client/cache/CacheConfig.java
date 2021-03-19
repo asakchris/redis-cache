@@ -14,6 +14,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 import org.springframework.data.redis.cache.RedisCacheConfiguration;
+import org.springframework.data.redis.cache.RedisCacheManager.RedisCacheManagerBuilder;
 import org.springframework.data.redis.connection.RedisClusterConfiguration;
 import org.springframework.data.redis.connection.RedisStandaloneConfiguration;
 import org.springframework.data.redis.connection.lettuce.LettuceClientConfiguration;
@@ -80,18 +81,20 @@ public class CacheConfig {
 
   @Bean
   public RedisCacheManagerBuilderCustomizer redisCacheManagerBuilderCustomizer() {
-    return builder -> {
-      final RedisCacheConfiguration config =
-          RedisCacheConfiguration.defaultCacheConfig()
-              .serializeKeysWith(SerializationPair.fromSerializer(new StringRedisSerializer()))
-              .serializeValuesWith(SerializationPair.fromSerializer(new JsonRedisSerializer()))
-              .entryTtl(Duration.ofMinutes(30));
-      builder.cacheDefaults(config);
-      cacheProperties
-          .getConfigByName()
-          .forEach(
-              (name, options) ->
-                  builder.withCacheConfiguration(name, config.entryTtl(options.getTimeToLive())));
-    };
+    return builder -> customize(builder, cacheProperties);
+  }
+
+  private void customize(RedisCacheManagerBuilder builder, CacheProperties cacheProperties) {
+    final RedisCacheConfiguration config =
+        RedisCacheConfiguration.defaultCacheConfig()
+            .serializeKeysWith(SerializationPair.fromSerializer(new StringRedisSerializer()))
+            .serializeValuesWith(SerializationPair.fromSerializer(new JsonRedisSerializer()))
+            .entryTtl(Duration.ofMinutes(30));
+    builder.cacheDefaults(config);
+    cacheProperties
+        .getConfigByName()
+        .forEach(
+            (name, options) ->
+                builder.withCacheConfiguration(name, config.entryTtl(options.getTimeToLive())));
   }
 }
