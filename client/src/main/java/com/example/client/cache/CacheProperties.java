@@ -11,6 +11,8 @@ import org.springframework.stereotype.Component;
 @ConfigurationProperties(prefix = "app.cache")
 @Data
 public class CacheProperties {
+  private String host;
+  private int port;
   private Map<String, CacheOptions> configByName = new HashMap<>();
 }
 

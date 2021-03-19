@@ -20,7 +20,7 @@ import lombok.ToString;
 @Getter
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @ToString
-public class Country implements Serializable {
+public class Country implements Serializable, CacheType {
 
   private static final long serialVersionUID = 1452566545714068658L;
 

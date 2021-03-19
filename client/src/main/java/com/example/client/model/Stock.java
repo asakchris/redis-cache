@@ -23,7 +23,7 @@ import org.springframework.data.redis.core.RedisHash;
 @Getter
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @ToString
-public class Stock implements Serializable {
+public class Stock implements Serializable, CacheType {
 
   private static final long serialVersionUID = 5370600044242926898L;
 

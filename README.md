@@ -21,13 +21,20 @@ for more details.
 
 ### Run
 ##### Redis Server
-Follow below steps to start Redis server:
-1. Refer the docker compose [file](docker-compose.yml), it has redis & redis commander service
-1. Run `docker-compose up -d` command from root of the project to start redis server
-1. Access Redis web management tool using this [link](http://localhost:8081)
+Run Redis server using anyone of following ways:
+###### Embedded Server
+- Refer [this](.run/Server.run.xml) run configuration and run it in Intellij
+- Use system property `redis.server.port` to change server port if required
+###### Docker
+- Refer the docker compose [file](docker-compose.yml), it has redis & redis commander service
+- Run `docker-compose up -d` command from root of the project to start redis server
+- Access Redis web management tool using this [link](http://localhost:8082)
+###### AWS
+- Use AWS ElastiCache managed service to provision Redis cluster
 
 ##### Redis Client
-Run [Application](client/src/main/java/com/example/client/Application.java) to start Redis Client
+- Refer [this](.run/Application.run.xml) run configuration and run it in Intellij to start Redis Client to connect local Redis server
+- Refer [this](.run/Client-AWS.run.xml) run configuration and run it in Intellij to start Redis Client to connect AWS ElastiCache Redis cluster
 
 ### Test
 Refer endpoints in [Postman Collections](postman-collection/Redis.postman_collection.json)

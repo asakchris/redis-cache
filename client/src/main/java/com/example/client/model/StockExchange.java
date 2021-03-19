@@ -20,7 +20,7 @@ import lombok.ToString;
 @Getter
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @ToString
-public class StockExchange implements Serializable {
+public class StockExchange implements Serializable, CacheType {
 
   private static final long serialVersionUID = 4647739188006325051L;
 

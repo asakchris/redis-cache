@@ -1,8 +1,8 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="Client-Local" type="Application" factoryName="Application">
+  <configuration default="false" name="Client-AWS" type="Application" factoryName="Application">
     <option name="MAIN_CLASS_NAME" value="com.example.client.Application" />
     <module name="client" />
-    <option name="VM_PARAMETERS" value="-Dspring.profiles.active=local" />
+    <option name="VM_PARAMETERS" value="-Dspring.profiles.active=aws" />
     <extension name="coverage">
       <pattern>
         <option name="PATTERN" value="com.example.client.*" />

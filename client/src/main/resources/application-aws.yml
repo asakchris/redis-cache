@@ -1,0 +1,4 @@
+app:
+  cache:
+    host: clustercfg.dev-xxxxx-redis-01.xxxxx.use1.cache.amazonaws.com
+    port: 6379

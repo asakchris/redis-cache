@@ -3,21 +3,36 @@ server:
   servlet:
     context-path: /api/v1/cache/client
 
+management:
+  server:
+    port: 8081
+  endpoints:
+    web:
+      exposure:
+        include: health
+  endpoint:
+    health:
+      show-details: ALWAYS
+
 spring:
   application:
     name: Cache-Client
-  cache:
-    type: redis
-    host: localhost
-    port: 6379
+  #cache:
+    #type: redis
+    #host: clustercfg.dev-arrow-redis-01.rmnj5d.use1.cache.amazonaws.com
+    #port: 6379
     #cache-names: "stocks,exchanges,countries"
     #redis:
       #time-to-live: "10m"
+
+logging:
+  level:
+    io.lettuce: debug
 
 app:
   cache:
     configByName:
       "exchanges":
-        timeToLive: 120s
+        timeToLive: 1200s
       "countries":
-        timeToLive: 3m
+        timeToLive: 10m
