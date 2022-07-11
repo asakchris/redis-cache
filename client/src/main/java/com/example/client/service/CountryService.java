@@ -8,4 +8,6 @@ public interface CountryService {
   Country findCountryById(String countryId);
 
   Country deleteCountry(String countryId);
+
+  boolean isCountryExist(String countryId);
 }

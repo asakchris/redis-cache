@@ -36,3 +36,5 @@ app:
         timeToLive: 1200s
       "countries":
         timeToLive: 10m
+      "country.exist":
+        timeToLive: 5m
