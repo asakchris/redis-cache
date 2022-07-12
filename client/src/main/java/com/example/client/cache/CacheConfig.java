@@ -91,6 +91,9 @@ public class CacheConfig {
             .serializeValuesWith(SerializationPair.fromSerializer(new JsonRedisSerializer()))
             .entryTtl(Duration.ofMinutes(30));
     builder.cacheDefaults(config);
+    if (log.isInfoEnabled()) {
+      log.info("cacheProperties: {}", cacheProperties);
+    }
     cacheProperties
         .getConfigByName()
         .forEach(
