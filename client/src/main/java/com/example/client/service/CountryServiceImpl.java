@@ -22,7 +22,7 @@ public class CountryServiceImpl implements CountryService {
   }
 
   @Override
-  @Cacheable(value = "country.exist", key = "#countryId")
+  @Cacheable(value = "country:exist", key = "#countryId")
   public boolean isCountryExist(String countryId) {
     return Optional.ofNullable(cacheService.getValueFromCache(CACHE_NAME, countryId, Country.class))
         .isPresent();

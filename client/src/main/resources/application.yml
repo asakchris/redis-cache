@@ -17,13 +17,6 @@ management:
 spring:
   application:
     name: Cache-Client
-  #cache:
-    #type: redis
-    #host: clustercfg.dev-arrow-redis-01.rmnj5d.use1.cache.amazonaws.com
-    #port: 6379
-    #cache-names: "stocks,exchanges,countries"
-    #redis:
-      #time-to-live: "10m"
 
 logging:
   level:
@@ -36,5 +29,5 @@ app:
         timeToLive: 1200s
       "countries":
         timeToLive: 10m
-      "country.exist":
+      "country:exist":
         timeToLive: 5m
