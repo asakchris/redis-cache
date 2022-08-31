@@ -3,7 +3,6 @@ package com.example.client.cache;
 import io.lettuce.core.ReadFrom;
 import io.lettuce.core.cluster.ClusterClientOptions;
 import io.lettuce.core.cluster.ClusterTopologyRefreshOptions;
-import java.time.Duration;
 import java.util.Collections;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
@@ -89,7 +88,7 @@ public class CacheConfig {
         RedisCacheConfiguration.defaultCacheConfig()
             .serializeKeysWith(SerializationPair.fromSerializer(new StringRedisSerializer()))
             .serializeValuesWith(SerializationPair.fromSerializer(new JsonRedisSerializer()))
-            .entryTtl(Duration.ofMinutes(30));
+            .entryTtl(cacheProperties.getDefaultTimeToLive());
     builder.cacheDefaults(config);
     if (log.isInfoEnabled()) {
       log.info("cacheProperties: {}", cacheProperties);

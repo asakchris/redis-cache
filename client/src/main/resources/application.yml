@@ -24,6 +24,7 @@ logging:
 
 app:
   cache:
+    defaultTimeToLive: 15m
     configByName:
       "exchanges":
         timeToLive: 1200s

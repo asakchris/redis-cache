@@ -13,6 +13,7 @@ import org.springframework.stereotype.Component;
 public class CacheProperties {
   private String host;
   private int port;
+  private Duration defaultTimeToLive = Duration.ofMinutes(30);
   private Map<String, CacheOptions> configByName = new HashMap<>();
 }
 
